@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     height: 100%;
@@ -129,11 +129,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .masthead {
-    position: absolute;
-    left:0px;
-    overflow: hidden;
+    position: fixed;
+    height: 100%;
+    left: 0px;
+    top: 0px;
     padding-bottom: 3rem;
-    z-index: 2
+    z-index: 2;
 }
 
     .masthead .masthead-bg {
