@@ -60,7 +60,11 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
-
+.text-danger {
+    color: #fff !important;
+    background: red !important;
+    padding: 0px !important;
+}
 
 body {
     background-color: #cd9557;

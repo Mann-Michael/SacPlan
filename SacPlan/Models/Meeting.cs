@@ -16,9 +16,16 @@ namespace SacPlan.Models
         [Display(Name = "Meeting Date")]
         public DateTime MeetingDate { get; set; }
 
+        [Required]
         public string Conductor { get; set; }
+
+        [Required]
         public string Presiding { get; set; }
+
+        [Required]
         public string Invocation { get; set; }
+
+        [Required]
         public string Benediction { get; set; }
 
         //songs
@@ -30,7 +37,6 @@ namespace SacPlan.Models
         [Display(Name = "Sacrament Hymn")]
         public int SacramentHymn { get; set; }
 
-        [Range(1, 341)]
         [Display(Name = "Intermediate Hymn")]
         public int IntermediateHymn { get; set; }
 
