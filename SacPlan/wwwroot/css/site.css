@@ -41,6 +41,10 @@ html {
   min-height: 100%;
 }
 
+.table th{
+    border-top: 0px solid #dee2e6!important;
+}
+
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
