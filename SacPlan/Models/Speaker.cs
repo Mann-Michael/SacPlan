@@ -39,6 +39,6 @@ namespace SacPlan.Models
         [Required]
         public int Order { get; set; }
 
-        public int? MeetingID { get; set; }
+        public int MeetingID { get; set; }
     }
 }

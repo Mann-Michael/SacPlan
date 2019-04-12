@@ -1,18 +1,14 @@
 ﻿@model SacPlan.Models.Meeting
-
 @{
     ViewData["Title"] = "Edit";
 }
-
-<h1>Edit</h1>
-
-<h4>Meeting</h4>
+<h1>Edit - Meeting</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="MeetingID" />
+            <input id="meetingID" type="hidden" asp-for="MeetingID" />
             <div class="form-group">
                 <label asp-for="MeetingDate" class="control-label"></label>
                 <input asp-for="MeetingDate" class="form-control" />
@@ -48,6 +44,27 @@
                 <input asp-for="SacramentHymn" class="form-control" />
                 <span asp-validation-for="SacramentHymn" class="text-danger"></span>
             </div>
+
+            <div class="form-group">
+                <label asp-for="SacramentHymn" class="control-label"></label>
+                <input asp-for="SacramentHymn" class="form-control" />
+                <span asp-validation-for="SacramentHymn" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="SacramentHymn" class="control-label"></label>
+                <input asp-for="SacramentHymn" class="form-control" />
+                <span asp-validation-for="SacramentHymn" class="text-danger"></span>
+            </div>
+
+
+
+            <div id="speakersGroup" class="form-group">
+                <input id="seeSpeaker" type="button" value="List of Speakers" class="accbtn1" />
+            </div>
+
+
             <div class="form-group">
                 <label asp-for="IntermediateHymn" class="control-label"></label>
                 <input asp-for="IntermediateHymn" class="form-control" />
@@ -59,16 +76,14 @@
                 <span asp-validation-for="ClosingHymn" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save"   class="accbtn1" />
             </div>
         </form>
     </div>
 </div>
-
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a   class="accbtn2" asp-action="Index">Back to List</a>
 </div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

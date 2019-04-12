@@ -19,15 +19,34 @@ namespace SacPlan.Controllers
             _context = context;
         }
 
-        // GET: Speakers
-        public async Task<IActionResult> Index()
+
+            // GET: Speakers
+            public async Task<IActionResult> Index(int? mid)
         {
-            return View(await _context.Speakers.ToListAsync());
+            //var speakersList = await _context.Speakers.ToListAsync();
+
+
+            ViewData["MeetingID"] = mid;
+
+            var speakers = from s in _context.Speakers
+                           select s;
+            if (mid != null)
+            {
+                speakers = speakers.Where(s => s.MeetingID == mid);
+            }
+
+            return View(await speakers.AsNoTracking().ToListAsync());
+
+
+
         }
 
         // GET: Speakers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int? mid)
         {
+
+            ViewData["MeetingID"] = mid;
+
             if (id == null)
             {
                 return NotFound();
@@ -44,8 +63,9 @@ namespace SacPlan.Controllers
         }
 
         // GET: Speakers/Create
-        public IActionResult Create()
+        public IActionResult Create(int? mid)
         {
+            ViewData["MeetingID"] = mid;
             return View();
         }
 
@@ -60,14 +80,16 @@ namespace SacPlan.Controllers
             {
                 _context.Add(speaker);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { mid = speaker.MeetingID });
             }
             return View(speaker);
         }
 
         // GET: Speakers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int? mid)
         {
+            ViewData["MeetingID"] = mid;
+
             if (id == null)
             {
                 return NotFound();
@@ -111,14 +133,16 @@ namespace SacPlan.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index), new { mid = speaker.MeetingID });
             }
             return View(speaker);
         }
 
         // GET: Speakers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int? mid)
         {
+            ViewData["MeetingID"] = mid;
+
             if (id == null)
             {
                 return NotFound();
@@ -137,12 +161,13 @@ namespace SacPlan.Controllers
         // POST: Speakers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int? mid)
         {
+            ViewData["MeetingID"] = mid;
             var speaker = await _context.Speakers.FindAsync(id);
             _context.Speakers.Remove(speaker);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction(nameof(Index), new { mid = speaker.MeetingID });
         }
 
         private bool SpeakerExists(int id)

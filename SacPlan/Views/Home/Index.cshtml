@@ -1,8 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<div class="overlay"></div>
+<img class="imgmain" src="~/img/chapel.JPG">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="masthead">
+    <div class="masthead-bg"></div>
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-12 my-auto">
+                <div class="masthead-content text-white py-5 py-md-0">
+                    <h1 class="mb-3">Sacramental Meeting Planner</h1>
+                    <p class="mb-5">
+                        Now you can organize the sacramental meeting of your ward or branch.
+                    </p>
+                    <div class="input-group input-group-newsletter">
+                        <div class="input-group-append">
+                            <a asp-area="" asp-controller="Meetings" asp-action="Index" class="btn btn-secondary">Go to Meetings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+

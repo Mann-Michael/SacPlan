@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<SacPlan.Models.Speaker>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Meetings";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
+<p style="margin-top:30px">
+    <a asp-action="Create" class="accbtn1" asp-route-mid="@ViewData["MeetingID"]">Add Speaker</a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -23,9 +22,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Order)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MeetingID)
             </th>
             <th></th>
         </tr>
@@ -46,12 +42,9 @@
                 @Html.DisplayFor(modelItem => item.Order)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MeetingID)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SpeakerID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SpeakerID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SpeakerID">Delete</a>
+                <a asp-action="Edit" class="accbtn2" asp-route-id="@item.SpeakerID" asp-route-mid="@ViewData["MeetingID"]">Edit</a> |
+                <a asp-action="Details" class="accbtn2" asp-route-id="@item.SpeakerID" asp-route-mid="@ViewData["MeetingID"]">Details</a> |
+                <a asp-action="Delete" class="accbtn2" asp-route-id="@item.SpeakerID" asp-route-mid="@ViewData["MeetingID"]">Delete</a>
             </td>
         </tr>
 }

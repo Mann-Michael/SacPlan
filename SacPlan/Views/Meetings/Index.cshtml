@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1><a href="./" style="font-size:15px;color:#ffffff">Home /</a> Meetings</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create"  class="accbtn1" >New Meeting</a>
 </p>
 <table class="table">
     <thead>
@@ -26,18 +26,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Benediction)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OpeningHymn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SacramentHymn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IntermediateHymn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ClosingHymn)
             </th>
             <th></th>
         </tr>
@@ -61,21 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Benediction)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.OpeningHymn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SacramentHymn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IntermediateHymn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ClosingHymn)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.MeetingID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.MeetingID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.MeetingID">Delete</a>
+                <a asp-action="Edit"  class="accbtn2" asp-route-id="@item.MeetingID">Edit</a> |
+                <a asp-action="Details"  class="accbtn2" asp-route-id="@item.MeetingID">Details</a> |
+                <a asp-action="Delete"  class="accbtn2" asp-route-id="@item.MeetingID">Delete</a>
             </td>
         </tr>
 }
