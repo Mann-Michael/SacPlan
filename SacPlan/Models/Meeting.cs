@@ -22,18 +22,19 @@ namespace SacPlan.Models
         public string Benediction { get; set; }
 
         //songs
-        [Required]
+        [Required, Range(1, 341)]
         [Display(Name = "Opening Hymn")]
         public int OpeningHymn { get; set; }
 
-        [Required]
+        [Required, Range(1, 341)]
         [Display(Name = "Sacrament Hymn")]
         public int SacramentHymn { get; set; }
 
+        [Range(1, 341)]
         [Display(Name = "Intermediate Hymn")]
         public int IntermediateHymn { get; set; }
 
-        [Required]
+        [Required, Range(1, 341)]
         [Display(Name = "Closing Hymn")]
         public int ClosingHymn { get; set; }
 

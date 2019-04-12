@@ -19,11 +19,52 @@ namespace SacPlan.Controllers
             _context = context;
         }
 
-        // GET: Meetings
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            string sortOrder,
+            string currentFilter,
+            string searchString,
+            int? pageNumber)
         {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "Date" ? "date_desc" : "Date";
 
-            return View(await _context.Meetings.ToListAsync());
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+            var meetings = from m in _context.Meetings
+                           select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                meetings = meetings.Where(s => s.Conductor.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    meetings = meetings.OrderByDescending(s => s.Conductor);
+                    break;
+                case "Date":
+                    meetings = meetings.OrderBy(s => s.MeetingDate);
+                    break;
+                case "date_desc":
+                    meetings = meetings.OrderByDescending(s => s.MeetingDate);
+                    break;
+                default:
+                    meetings = meetings.OrderBy(s => s.Conductor);
+                    break;
+            }
+            int pageSize = 10;
+
+            return View(await PaginatedList<Meeting>.CreateAsync(meetings.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
         // GET: Meetings/Details/5
